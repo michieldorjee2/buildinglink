@@ -4,6 +4,9 @@
   "description": "A TypeScript client for interacting with the BuildingLink system, handling various authentication flows and redirects.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "bin": {
+    "buildinglink-mcp": "dist/mcp.js"
+  },
   "repository": "https://github.com/johnagan/buildinglink",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
@@ -19,14 +22,17 @@
     "buildinglink",
     "client",
     "library",
-    "hoa"
+    "hoa",
+    "mcp",
+    "model-context-protocol"
   ],
   "author": "John Agan <johnagan@gmail.com>",
   "license": "MIT",
   "packageManager": "pnpm@10.11.0",
   "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.26.0",
     "node-html-parser": "^7.0.1",
-    "zod": "^3.24.3"
+    "zod": "^3.25.76"
   },
   "devDependencies": {
     "@types/jest": "^29.5.14",
