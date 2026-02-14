@@ -31,6 +31,68 @@ const response = await client.fetch(url);
 const response = await client.page("Deliveries/Deliveries.aspx");
 ```
 
+## 🤖 MCP Server
+
+This package includes an MCP (Model Context Protocol) server that exposes BuildingLink functionality as tools for AI assistants like Claude.
+
+### Configuration
+
+Add the following to your MCP client configuration (e.g. Claude Desktop `claude_desktop_config.json`):
+
+```json
+{
+  "mcpServers": {
+    "buildinglink": {
+      "command": "npx",
+      "args": ["-y", "buildinglink"],
+      "env": {
+        "BUILDINGLINK_USERNAME": "your_username",
+        "BUILDINGLINK_PASSWORD": "your_password",
+        "BUILDINGLINK_API_KEY": "optional_api_key"
+      }
+    }
+  }
+}
+```
+
+Or if installed globally:
+
+```json
+{
+  "mcpServers": {
+    "buildinglink": {
+      "command": "buildinglink-mcp",
+      "env": {
+        "BUILDINGLINK_USERNAME": "your_username",
+        "BUILDINGLINK_PASSWORD": "your_password"
+      }
+    }
+  }
+}
+```
+
+### Available Tools
+
+| Tool               | Description                                                       |
+| ------------------ | ----------------------------------------------------------------- |
+| `login`            | Authenticate with BuildingLink                                    |
+| `get_buildings`    | Get authorized buildings/properties                               |
+| `get_occupant`     | Get current occupant information                                  |
+| `get_announcements`| Get active building announcements                                 |
+| `get_deliveries`   | Get open deliveries/packages                                      |
+| `get_events`       | Get calendar events (requires `from_date` and `to_date` params)   |
+| `get_library`      | Get document library (apartment and building documents)           |
+| `get_vendors`      | Get preferred vendors/service providers                           |
+| `get_user`         | Get authenticated user profile (requires `BUILDINGLINK_API_KEY`)  |
+
+### Environment Variables
+
+| Variable                  | Required | Description                        |
+| ------------------------- | -------- | ---------------------------------- |
+| `BUILDINGLINK_USERNAME`   | Yes      | Your BuildingLink login username   |
+| `BUILDINGLINK_PASSWORD`   | Yes      | Your BuildingLink login password   |
+| `BUILDINGLINK_API_KEY`    | No       | API key (needed for `get_user`)    |
+
 ## 📦 Available Modules
 
 | Module        | Method                            | Description                                               |
